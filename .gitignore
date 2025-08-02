@@ -2,6 +2,10 @@
 composer.lock
 /vendor
 
+# Test Related
+.phpunit.cache
+coverage/
+
 # Editors
 /.idea
 /.fleet
