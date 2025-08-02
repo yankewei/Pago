@@ -12,7 +12,7 @@ readonly class Version
      * Latest stable PHP version
      * This constant is updated automatically by GitHub Actions
      */
-    public const string LATEST_STABLE_VERSION = '8.4.10';
+    public const string LATEST_STABLE_VERSION = '8.4.11';
 
     private function __construct(
         public readonly int $version_id,
