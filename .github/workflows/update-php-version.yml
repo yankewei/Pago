@@ -10,6 +10,8 @@ on:
 permissions:
   contents: write
   pull-requests: write
+  issues: write
+  repository-projects: write
 
 jobs:
   update-version:
@@ -26,6 +28,11 @@ jobs:
         with:
           php-version: '8.4'
           
+      - name: Configure Git
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
       - name: Check for version update
         id: check-version
         run: php scripts/update-version.php
@@ -35,6 +42,8 @@ jobs:
         uses: peter-evans/create-pull-request@v7
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
+          author: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
+          committer: github-actions[bot] <github-actions[bot]@users.noreply.github.com>
           commit-message: "Update PHP version to ${{ steps.check-version.outputs.new_version }}"
           title: "🚀 Update PHP version to ${{ steps.check-version.outputs.new_version }}"
           body: |
@@ -49,7 +58,7 @@ jobs:
             ### Auto-generated
             This PR was automatically created by GitHub Actions when a new PHP version was detected.
 
-            🤖 *Generated on {{ date.now() }}*
+            🤖 *Generated automatically by GitHub Actions*
           branch: update-php-version-${{ steps.check-version.outputs.new_version }}
           delete-branch: true
           draft: false
