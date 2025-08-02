@@ -1,0 +1,41 @@
+{
+    "name": "yankewei/pago",
+    "description": "A single tool for linting and formatting PHP code",
+    "type": "library",
+    "keywords": [
+        "linter",
+        "formator"
+    ],
+    "require-dev": {
+        "pestphp/pest": "^3.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Yankewei\\Pago\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Yankewei\\Pago\\Tests\\": "tests"
+        }
+    },
+    "authors": [
+        {
+            "name": "yankewei",
+            "email": "yankewei1993@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.4"
+    },
+    "config": {
+        "allow-plugins": {
+            "pestphp/pest-plugin": true
+        }
+    },
+    "scripts": {
+        "test": "vendor/bin/pest"
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
